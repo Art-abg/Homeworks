@@ -6,7 +6,7 @@ const human = {
 };
 const str = ""; // str -> String.prototype -> Object.prototype -> null
 const user = {
-  // user -> Object.prototype -> null
+  // user -> human -> Object.prototype -> null
   name: "John",
   __proto__: human
 };
