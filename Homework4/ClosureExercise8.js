@@ -27,7 +27,7 @@ function add(a, b, c) {
 
 function curry(fn) {
   return function curred(...args) {
-    if (fn.length === args.length) {
+    if (fn.length >= args.length) {
       return fn(...args);
     } else {
       return function (...newArgs) {
@@ -38,6 +38,7 @@ function curry(fn) {
 }
 
 const curriedAdd = curry(add);
+
 console.log(curriedAdd(1)(2)(3)); // Output: 6
 console.log(curriedAdd(1, 2)(3)); // Output: 6
 console.log(curriedAdd(1, 2, 3)); // Output: 6

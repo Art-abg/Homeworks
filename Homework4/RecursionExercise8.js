@@ -1,32 +1,26 @@
-// Recursion Exercise 8
-// Write a recursive function to flatten a nested object.
-
-function flattenObject(obj) {
-  let flat = {};
-  function recursive(obj) {
-    Object.keys(obj).forEach((key) => {
-      return recursive(obj[key]); //not sure how to do this
-    });
-  }
-  return flat;
-}
-
 const nestedObject = {
   a: 1,
+  g: 5,
   b: {
     c: 2,
     d: {
       e: 3,
       f: 4
     }
-  },
-  g: 5
+  }
 };
-const flattenedObject = flattenObject(nestedObject);
-console.log(flattenedObject); /* {
-    "a": 1,
-    "b.c": 2,
-    "b.d.e": 3,
-    "b.d.f": 4,
-    "g": 5
-   } */
+
+function nestedSum(obj) {
+  let sum = 0;
+  for (let key in obj) {
+    if (typeof obj[key] === "object") {
+      sum += nestedSum(obj[key]);
+    }
+    if (typeof obj[key] === "number") {
+      sum += obj[key];
+    }
+  }
+  return sum;
+}
+
+console.log(nestedSum(nestedObject));
